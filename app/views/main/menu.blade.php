@@ -1,4 +1,4 @@
-<header role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+<header role="navigation" class="navbar navbar-inverse navbar-fixed-top" style="box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);">
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-tower"></span></a>
