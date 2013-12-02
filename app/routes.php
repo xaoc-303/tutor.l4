@@ -18,4 +18,6 @@ Route::get('/', function()
 });
 */
 
+Route::controller('radio','RadioController');
+
 Route::controller('/','MainController');

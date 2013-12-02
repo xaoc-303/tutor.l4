@@ -1,0 +1,13 @@
+<embed  type="application/x-shockwave-flash"
+id="flash_app"
+name="flash_app"
+width="619"
+height="552"
+quality="high"
+flashvars=""
+allowfullscreen="true"
+allownetworking="all"
+allowscriptaccess="never"
+allowfullscreeninteractive="true"
+wmode="window"
+src="/radio.swf">

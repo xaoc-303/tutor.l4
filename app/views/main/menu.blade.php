@@ -6,7 +6,7 @@
     <nav role="navigation" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="active">
-          <a href="#">Item 1</a>
+          <a href="{{URL::action('RadioController@getIndex')}}">Радио</a>
         </li>
         <li>
           <a href="#">Item 2</a>
