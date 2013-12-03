@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('menu')
-{{ View::make('main.menu')->render() }}
+@include('main.menu')
 @stop
 
 @section('content')
