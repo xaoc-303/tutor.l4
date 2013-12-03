@@ -21,7 +21,7 @@
         <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> {{Session::get('user_name','')}} <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Сменить имя</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#myModal">Сменить имя</a></li>
           <li class="divider"></li>
           <li><a href="{{URL::action('Admin_Controller@getLogout')}}">Выйти</a></li>
         </ul>
@@ -31,3 +31,60 @@
     </nav>
   </div>
 </header>
+
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Сменить логин</h4>
+      </div>
+      <div class="modal-body">
+        <div id="msg-save-name"></div>
+        <p>Старый логин</p>
+        <input type="text" name="login_old" class="form-control"/>
+        <p>Новый логин</p>
+        <input type="text" name="login_new" class="form-control"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+        <button id="save-name" type="button" class="btn btn-primary">Сохранить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+  
+  // окно смены имени открыто
+  $('#myModal').on('shown.bs.modal', function () {
+    $(".modal-body input:first").focus();
+  });
+
+  // попытка сменить имя
+  $("#save-name").on('click', function() {
+    $.post(
+      "{{URL::action('MainController@postRenameLogin')}}",
+      {
+        login_old: $('.modal-body input[name=login_old]').val(),
+        login_new: $('.modal-body input[name=login_new]').val(),
+      },
+      function(response){
+        $("#msg-save-name").removeClass();
+        $("#msg-save-name").addClass("alert");
+        $("#msg-save-name").addClass( response.code == 0 ? 'alert-success' : 'alert-danger' );
+        $("#msg-save-name").text(response.message);
+
+        if(response.code == 0) {
+          $(".modal-footer button").addClass("disabled");
+          setTimeout(function() {
+            $('#myModal').modal('hide');
+            location.reload();
+          }, 2000);
+        }
+      }
+      );
+  });
+});
+</script>
