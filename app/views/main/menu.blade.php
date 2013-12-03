@@ -13,12 +13,20 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        @if(!Session::has('user_auth'))
         <li>
-          <a href="#">Авторизация</a>
+          <a href="{{URL::action('Admin_Controller@getAuth')}}">Авторизация</a>
         </li>
-        <li>
-          <a href="#">Регистрация</a>
+        @else
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> {{Session::get('user_name','')}} <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Сменить имя</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Выйти</a></li>
+        </ul>
         </li>
+        @endif
       </ul>
     </nav>
   </div>

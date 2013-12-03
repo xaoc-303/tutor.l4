@@ -19,5 +19,6 @@ Route::get('/', function()
 */
 
 Route::controller('radio','RadioController');
+Route::controller('admin','Admin_Controller');
 
 Route::controller('/','MainController');
