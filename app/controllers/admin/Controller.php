@@ -22,7 +22,7 @@ class Admin_Controller extends BaseController {
         return Redirect::back()->with('shield','Red');
     }
 
-    public function postLogout() {
+    public function getLogout() {
 
         Session::flush();
         Session::regenerate();

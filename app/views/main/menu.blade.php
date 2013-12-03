@@ -23,7 +23,7 @@
         <ul class="dropdown-menu">
           <li><a href="#">Сменить имя</a></li>
           <li class="divider"></li>
-          <li><a href="#">Выйти</a></li>
+          <li><a href="{{URL::action('Admin_Controller@getLogout')}}">Выйти</a></li>
         </ul>
         </li>
         @endif
