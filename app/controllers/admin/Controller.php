@@ -14,12 +14,12 @@ class Admin_Controller extends BaseController {
     	$username = Input::get('username');
     	$password = Input::get('password');
 
-    	if($username == $password){
+    	if($username == $password and !empty($password)){
             Session::put('user_auth', true);
             Session::put('user_name', $username);
     		return Redirect::to('/');
     	}
-        return Redirect::back()->with('shield','Red');
+        return Redirect::back()->with('shield','Red')->with('username',$username);
     }
 
     public function getLogout() {

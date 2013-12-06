@@ -9,17 +9,20 @@
 				<h3 class="modal-title">Авторизация</h3>
 			</div>
 			<div class="modal-body">
-				<div class="modal-body" style="float: left;">
+				@if(Session::get('shield','Grey') == 'Red')
+				<div class="alert alert-danger">Пароль такой же, как логин</div>
+				@endif
+				<div style="float: left;">
 				<h5>
 					<label>Логин:</label>
-					<input type="text" class="form-control" name="username" value="" style="width: 300px;">
+					<input type="text" class="form-control" name="username" value="{{Session::get('username','')}}" style="width: 300px;">
 				</h5>
 				<h5>
 					<label>Пароль:</label>
 					<input type="password" class="form-control" name="password" value="" style="width: 300px;">
 				</h5>
 				</div>
-				<div class="modal-body" style="float: left;">
+				<div style="float: left;">
 					<img src="/img/Shield_{{Session::get('shield','Grey')}}.png" style="margin-left: 20px;">
 				</div>
 			</div>
@@ -36,6 +39,6 @@ $('#myModal').modal({
 	keyboard: false,
 	show: true,
 });
-$("input:first").focus();
+$("input:eq({{Session::get('shield','Grey') == 'Red' ? 1 : 0}})").focus();
 </script>
 @stop
