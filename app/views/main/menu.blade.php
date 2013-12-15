@@ -9,7 +9,7 @@
           <a href="{{URL::action('RadioController@getIndex')}}">Радио</a>
         </li>
         <li>
-          <a href="#">Item 2</a>
+          <a href="{{URL::action('CatalogController@getIndex')}}">Каталог</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

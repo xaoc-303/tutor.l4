@@ -18,6 +18,8 @@ Route::get('/', function()
 });
 */
 
+Route::get('catalog/files-in-dir/{path?}', 'CatalogController@getFilesInDir')->where('path', '(.+)');
+Route::controller('catalog','CatalogController');
 Route::controller('radio','RadioController');
 Route::controller('admin','Admin_Controller');
 
