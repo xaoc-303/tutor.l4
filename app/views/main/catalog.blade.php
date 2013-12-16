@@ -11,10 +11,8 @@
     };
 
     function Request(url){
-        console.log(url);
         $.getJSON("{{URL::action('CatalogController@getFilesInDir')}}/"+url,
             function(data){
-                console.log(data);
                 switch (data[0]) {
                     case 'files':
                         $(".catalog-menu li").undelegate("a","click");
@@ -25,21 +23,15 @@
                         DelegateCatalogMenu();
                         break;
                     case 'text':
-                        $("#catalog-content").html(data[1]);
-                        break;
                     case 'img':
+                    case 'video':
+                    case 'music':
                         $("#catalog-content").html(data[1]);
                         break;
                 }
-
             }
-
         );
     };
-
-
-
-
 
     $(function(){
         Request('');

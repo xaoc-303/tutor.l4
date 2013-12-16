@@ -69,7 +69,11 @@ class CatalogController extends BaseController {
 
         } elseif(in_array($extension, $ext_music)) {
 
+            return json_encode(['music', View::make('main.player')->with('file', '/docs/'.$path)->render()]);
+
         } elseif(in_array($extension, $ext_video)) {
+
+            return json_encode(['video', View::make('main.player')->with('file', '/docs/'.$path)->render()]);
 
         } else {
 
