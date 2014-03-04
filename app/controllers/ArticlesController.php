@@ -52,6 +52,8 @@ class ArticlesController extends \BaseController {
         $article->body    = Input::get('body');
         $article->save();
 
+        Event::fire('article.test', [$article, __CLASS__.'::'.__FUNCTION__]);
+
         return Redirect::route('articles.edit', $article->id)->with('msg_success', 'The article was saved.');
 	}
 
@@ -96,6 +98,8 @@ class ArticlesController extends \BaseController {
         $article->title   = Input::get('title');
         $article->body    = Input::get('body');
         $article->save();
+
+        Event::fire('article.test', [$article, __CLASS__.'::'.__FUNCTION__]);
 
         return Redirect::route('articles.edit', $article->id)->with('msg_success', 'The article was saved.');
 	}
